@@ -1,0 +1,12 @@
+body {
+  background-color: #d9e3ed;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: space-around;
+  gap: 3rem;
+  padding: 2rem 0;
+  place-items: center;
+}
