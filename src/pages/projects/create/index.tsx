@@ -6,6 +6,7 @@ import { inputProps } from "./inputProps";
 import { TextArea } from "../../../components/TextArea";
 import { Select } from "../../../components/Select";
 import { Container } from "../../../components/Container/styles";
+import { Button } from "../../../components/Button";
 
 export const ProjectsCreate = () => {
   const initialValue = {
@@ -103,7 +104,7 @@ export const ProjectsCreate = () => {
             />
           )
         )}
-        <button>Criar Projeto </button>
+        <Button title={'Criar Projeto'} />
       </form>
     </Container>
   );
