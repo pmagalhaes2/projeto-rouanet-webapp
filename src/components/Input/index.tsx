@@ -7,6 +7,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   placeholder?: string;
   type?: string;
+  value?: string;
   freeSize?: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
@@ -17,6 +18,7 @@ export const Input = ({
   label,
   placeholder,
   type = "text",
+  value,
   freeSize = false,
   onChange,
 }: InputProps) => {
@@ -29,6 +31,7 @@ export const Input = ({
         name={name}
         placeholder={placeholder}
         type={type}
+        value={value}
         onChange={onChange}
       />
     </Container>

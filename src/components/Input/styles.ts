@@ -8,7 +8,7 @@ export const Container = styled.div<IProps>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: ${({ freeSize }) => (freeSize ? "0 8rem" : "0 1rem")};
+  padding: ${({ freeSize }) => (freeSize ? "0 5rem" : "0 1rem")};
 
   label {
     font-size: 1.1rem;

@@ -6,6 +6,7 @@ interface TextProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   name: string;
   label?: string;
   placeholder?: string;
+  value?: string;
   onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
@@ -14,6 +15,7 @@ export function TextArea({
   name,
   label,
   placeholder,
+  value,
   onChange,
   maxLength = -1,
 }: TextProps) {
@@ -26,6 +28,7 @@ export function TextArea({
           id={id}
           name={name}
           placeholder={placeholder}
+          value={value}
           onChange={onChange}
           maxLength={maxLength}
         />
