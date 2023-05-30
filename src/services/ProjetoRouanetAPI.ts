@@ -1,5 +1,6 @@
 import axios from "axios";
 export interface IProjectInfo {
+  id_projeto: number;
   pronac: number;
   ano_projeto: number;
   nome: string;
@@ -43,7 +44,14 @@ export const api = axios.create({
 export const getProjectsList = (): Promise<IProjectInfo[]> =>
   api.get(`${baseURL}/projects`).then((response) => response.data);
 
-export const createProject = (request: IProjectInfo) => {
-  api
-    .post(`${baseURL}/projects`, request);
-};
+export const createProject = (request: IProjectInfo) =>
+  api.post(`${baseURL}/projects`, request);
+
+export const deleteProject = (id: number) =>
+  api.delete(`${baseURL}/projects/${id}`);
+
+export const getProjectById = (id: number): Promise<IProjectInfo> =>
+  api.get(`${baseURL}/projects/${id}`).then((response) => response.data);
+
+export const updateProject = (id: number, request: IProjectInfo) =>
+  api.put(`${baseURL}/projects/update/${id}`, request);

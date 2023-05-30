@@ -1,4 +1,4 @@
-import { ChangeEvent, EventHandler, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { createProject } from "../../../services/ProjetoRouanetAPI";
 import { useNavigate } from "react-router-dom";
 import { Input } from "../../../components/Input";
@@ -10,6 +10,7 @@ import { Button } from "../../../components/Button";
 
 export const ProjectsCreate = () => {
   const initialValue = {
+    id_projeto: 0,
     pronac: 0,
     ano_projeto: 0,
     nome: "",
@@ -46,6 +47,8 @@ export const ProjectsCreate = () => {
 
   const [request, setRequest] = useState(initialValue);
 
+  const [selectValue, setSelectValue] = useState("");
+
   const navigate = useNavigate();
 
   const handleChange = (
@@ -58,14 +61,25 @@ export const ProjectsCreate = () => {
     setRequest({ ...request, [name]: value });
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setSelectValue(e.target.value);
+    handleChange(e);
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      createProject(request);
-      navigate("/projects");
-    } catch (err) {
-      console.log(err);
-    }
+    createProject(request)
+      .then((response) => {
+        if (response.status === 201) {
+          alert("Projeto criado com sucesso!");
+          navigate("/projects");
+        }
+      })
+      .catch((err) => {
+        const { status } = err.response;
+        const { message } = err.response.data;
+        alert(`[Error ${status}] - Message: ${message}`);
+      });
   };
 
   return (
@@ -88,7 +102,8 @@ export const ProjectsCreate = () => {
               name={input.name}
               label={input.label}
               options={input.options as string[]}
-              onChange={handleChange}
+              onChange={handleSelectChange}
+              value={selectValue}
               key={index}
             />
           ) : (
@@ -104,7 +119,7 @@ export const ProjectsCreate = () => {
             />
           )
         )}
-        <Button title={'Criar Projeto'} />
+        <Button variant={"primary"} title={"Criar Projeto"} />
       </form>
     </Container>
   );

@@ -6,16 +6,14 @@ interface IProps {
 
 export const Card = styled.div<IProps>`
   position: relative;
-  width: 80%;
-  height: 50rem;
-  gap: 1rem;
+  width: 100%;
+  height: 60rem;
   border-radius: 0.5rem;
   padding: 2rem 2rem 5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  text-align: justify;
   background-color: #ffffff;
 
   > span {
@@ -55,7 +53,7 @@ export const Card = styled.div<IProps>`
   }
 
   h2 {
-    margin: 2rem 0;
+    margin-top: 3rem;
     color: #0b132b;
   }
 
@@ -72,5 +70,11 @@ export const Card = styled.div<IProps>`
       font-weight: bold;
       color: #1c2541;
     }
+  }
+
+  .wrap-button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
 `;
