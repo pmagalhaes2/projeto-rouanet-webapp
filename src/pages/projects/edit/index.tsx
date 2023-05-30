@@ -20,44 +20,6 @@ export const ProjectsEdit = () => {
     {} as IProjectInfo
   );
 
-  //   const initialValue = useMemo(() => {
-  //     return {
-  //       id_projeto: projectInfos.id_projeto,
-  //       pronac: projectInfos.pronac,
-  //       ano_projeto: projectInfos.ano_projeto,
-  //       nome: projectInfos.nome,
-  //       segmento: projectInfos.segmento,
-  //       area: projectInfos.area,
-  //       uf: projectInfos.uf,
-  //       municipio: projectInfos.municipio,
-  //       data_inicio: projectInfos.data_inicio,
-  //       data_termino: projectInfos.data_termino,
-  //       situacao: projectInfos.situacao,
-  //       mecanismo: projectInfos.mecanismo,
-  //       enquadramento: projectInfos.enquadramento,
-  //       valor_captado: projectInfos.valor_captado,
-  //       valor_aprovado: projectInfos.valor_aprovado,
-  //       acessibilidade: projectInfos.acessibilidade,
-  //       objetivos: projectInfos.objetivo,
-  //       justificativa: projectInfos.justificativa,
-  //       etapa: projectInfos.etapa,
-  //       ficha_tecnica: projectInfos.ficha_tecnica,
-  //       impacto_ambiental: projectInfos.impacto_ambiental,
-  //       especificacao_tecnica: projectInfos.especificacao_tecnica,
-  //       providencia: projectInfos.providencia,
-  //       democratizacao: projectInfos.democratizacao,
-  //       sinopse: projectInfos.sinopse,
-  //       resumo: projectInfos.resumo,
-  //       valor_projeto: projectInfos.valor_projeto,
-  //       outras_fontes: projectInfos.outras_fontes,
-  //       valor_proposta: projectInfos.valor_proposta,
-  //       valor_solicitado: projectInfos.valor_solicitado,
-  //       objetivo: projectInfos.objetivo,
-  //       estrategia_execucao: projectInfos.estrategia_execucao,
-  //       link_incentivadores: projectInfos.link_incentivadores,
-  //     };
-  //   }, [projectInfos]);
-
   useEffect(() => {
     getProjectById(id).then((resp: IProjectInfo) => {
       resp.data_inicio = resp.data_inicio.slice(0, 10);
