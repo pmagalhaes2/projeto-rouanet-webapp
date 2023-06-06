@@ -12,13 +12,15 @@ import { Select } from "../../../components/Select";
 import { Input } from "../../../components/Input";
 import { Button } from "../../../components/Button";
 
+interface IProject {
+  [key: string]: any;
+}
+
 export const ProjectsEdit = () => {
   const params = useParams();
   const id = Number(params.id);
 
-  const [projectInfo, setProjectInfo] = useState<IProjectInfo>(
-    {} as IProjectInfo
-  );
+  const [projectInfo, setProjectInfo] = useState<IProject>({} as IProjectInfo);
 
   useEffect(() => {
     getProjectById(id).then((resp: IProjectInfo) => {
@@ -47,7 +49,7 @@ export const ProjectsEdit = () => {
     );
 
     if (option) {
-      updateProject(id, projectInfo)
+      updateProject(id, projectInfo as IProjectInfo)
         .then((response) => {
           if (response.status === 200) {
             alert("Projeto alterado com sucesso!");
